@@ -1,0 +1,52 @@
+<main class="container pagina duas-colunas">
+  <div class="coluna">
+    @if (clienteId) {
+      <h1 class="titulo">Editar cliente.</h1>
+      <p class="texto-apoio">Altere os dados e salve.</p>
+    } @else {
+      <h1 class="titulo">Criar conta.</h1>
+      <p class="texto-apoio">Leva menos de um minuto.</p>
+    }
+  </div>
+
+  <form class="formulario">
+    @if (clienteId) {
+      <div class="campo">
+        <label for="id">Código</label>
+        <input id="id" name="id" type="text" [ngModel]="cliente.id" disabled>
+      </div>
+    }
+
+    <div class="campo">
+      <label for="nome">Nome</label>
+      <input id="nome" name="nome" type="text" [(ngModel)]="cliente.nome">
+    </div>
+
+    <div class="campo">
+      <label for="email">E-mail</label>
+      <input id="email" name="email" type="email" [(ngModel)]="cliente.email" [disabled]="clienteId !== null">
+    </div>
+
+    <div class="campo">
+      <label for="senha">Senha</label>
+      <input id="senha" name="senha" type="password" autocomplete="new-password" [(ngModel)]="cliente.senha">
+    </div>
+
+    <div class="campo">
+      <label for="confirmarSenha">Confirmar senha</label>
+      <input id="confirmarSenha" name="confirmarSenha" type="password" autocomplete="new-password" [(ngModel)]="confirmarSenha">
+    </div>
+
+    @if (mensagemErro !== '') {
+      <p class="erro">{{ mensagemErro }}</p>
+    }
+
+    @if (clienteId) {
+      <button class="botao" type="submit" (click)="salvar()">Salvar alterações</button>
+      <p class="depois"><a class="link" routerLink="/admin-clientes-listar">Cancelar</a></p>
+    } @else {
+      <button class="botao" type="submit" (click)="salvar()">Criar conta</button>
+      <p class="depois">Já tem conta? <a class="link" routerLink="/login">Entrar</a></p>
+    }
+  </form>
+</main>

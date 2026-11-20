@@ -1,7 +1,14 @@
 <header class="topo">
   <div class="container topo-conteudo">
-    @if (usuarioLogado() === 'admin') {
+    @if (ehAdmin()) {
       <span class="logo"><img src="images/logo-hero-bay.png" alt="Hero Bay">Hero Bay</span>
+
+      <nav class="navegacao">
+        @for (item of itensAdmin; track item.link) {
+          <a [routerLink]="item.link">{{ item.label }}</a>
+        }
+      </nav>
+
       <div class="acoes">
         <span class="fraco">Administrador</span>
         <button class="sair" (click)="sair()">Sair</button>
@@ -10,19 +17,19 @@
       <a class="logo" routerLink="/"><img src="images/logo-hero-bay.png" alt="Hero Bay">Hero Bay</a>
 
       <nav class="navegacao">
-        @for (item of itensMenu; track item) {
+        @for (item of itensMenu; track item.link) {
           <a [routerLink]="item.link">{{ item.label }}</a>
         }
       </nav>
 
       <div class="acoes">
-        @if (usuarioLogado() === '') {
+        @if (nomeUsuario() === '') {
           <a routerLink="/login">Entrar</a>
         } @else {
-          <span class="fraco">Olá, {{ usuarioLogado() }}</span>
+          <span class="fraco">Olá, {{ nomeUsuario() }}</span>
           <button class="sair" (click)="sair()">Sair</button>
         }
-        <a routerLink="/carrinho"><b>Carrinho</b> ({{ itensNoCarrinho() }})</a>
+        <a routerLink="/carrinho"><b>Carrinho</b> ({{ carrinho.contarItens() }})</a>
       </div>
     }
   </div>

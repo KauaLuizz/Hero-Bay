@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Usuario } from '../../models/usuario';
+import { ClienteService } from '../../services/cliente.service';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +11,15 @@ import { Usuario } from '../../models/usuario';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  private router = inject(Router);
+  private service = inject(ClienteService);
+
   login: string = '';
   senha: string = '';
   botaoDesabilitado: boolean = true;
   mensagemErro: string = '';
 
-  constructor(private router: Router) {}
-
+  // Valido se os campos foram preenchidos para habilitar o botão de login
   validarFormulario() {
     if (this.login.trim() !== '' && this.senha.trim() !== '') {
       this.botaoDesabilitado = false;
@@ -26,27 +28,25 @@ export class LoginComponent {
     }
   }
 
+  // Busco os clientes na API e procuro um com o mesmo e-mail e senha
   fazerLogin() {
-    if (this.login === 'admin@email.com' && this.senha === '123') {
-      localStorage.setItem('usuario', 'admin');
-      this.router.navigate(['/admin']);
-      return;
-    }
+    this.service.listar().subscribe({
+      next: (clientes) => {
+        for (let i = 0; i < clientes.length; i++) {
+          if (clientes[i].email === this.login && clientes[i].senha === this.senha) {
+            this.service.entrar(clientes[i]);
 
-    let usuarios: Usuario[] = [];
-    const salvos = localStorage.getItem('usuarios');
-    if (salvos) {
-      usuarios = JSON.parse(salvos);
-    }
-
-    for (let usuario of usuarios) {
-      if (usuario.email === this.login && usuario.senha === this.senha) {
-        localStorage.setItem('usuario', usuario.nome);
-        this.router.navigate(['/']);
-        return;
+            // Administrador vai para o painel, cliente volta para a loja
+            if (clientes[i].perfil === 'admin') {
+              this.router.navigate(['/admin-produtos-listar']);
+            } else {
+              this.router.navigate(['/']);
+            }
+            return;
+          }
+        }
+        this.mensagemErro = 'E-mail ou senha incorretos!';
       }
-    }
-
-    this.mensagemErro = 'E-mail ou senha incorretos.';
+    });
   }
 }

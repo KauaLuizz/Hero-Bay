@@ -1,0 +1,70 @@
+<main class="container pagina duas-colunas">
+  <div class="coluna">
+    @if (produtoId) {
+      <h1 class="titulo">Editar produto.</h1>
+      <p class="texto-apoio">Altere os dados e salve.</p>
+    } @else {
+      <h1 class="titulo">Novo produto.</h1>
+      <p class="texto-apoio">O produto aparece na loja assim que for salvo.</p>
+    }
+    <img class="previa" [src]="produto.imagem" [alt]="produto.nome">
+  </div>
+
+  <form class="formulario">
+    @if (produtoId) {
+      <div class="campo">
+        <label for="id">Código</label>
+        <input id="id" name="id" type="text" [ngModel]="produto.id" disabled>
+      </div>
+    }
+
+    <div class="campo">
+      <label for="nome">Nome do produto</label>
+      <input id="nome" name="nome" type="text" placeholder="Ex.: Teclado mecânico" [(ngModel)]="produto.nome">
+    </div>
+
+    <div class="campo">
+      <label for="categoria">Categoria</label>
+      <select id="categoria" name="categoria" [(ngModel)]="produto.categoria">
+        @for (categoria of categorias; track categoria) {
+          <option [value]="categoria">{{ categoria }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="descricao" rows="3" [(ngModel)]="produto.descricao"></textarea>
+    </div>
+
+    <div class="campo">
+      <label for="imagem">Foto</label>
+      <select id="imagem" name="imagem" [(ngModel)]="produto.imagem">
+        @for (imagem of imagens; track imagem) {
+          <option [value]="'images/produtos/' + imagem">{{ imagem }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="preco">Preço (R$)</label>
+      <input id="preco" name="preco" type="number" min="0" step="0.01" [(ngModel)]="produto.preco">
+    </div>
+
+    <div class="campo">
+      <label for="estoque">Estoque</label>
+      <input id="estoque" name="estoque" type="number" min="0" step="1" [(ngModel)]="produto.estoque">
+    </div>
+
+    @if (mensagemErro !== '') {
+      <p class="erro">{{ mensagemErro }}</p>
+    }
+
+    @if (produtoId) {
+      <button class="botao" type="submit" (click)="salvar()">Salvar alterações</button>
+    } @else {
+      <button class="botao" type="submit" (click)="salvar()">Cadastrar produto</button>
+    }
+    <p class="depois"><a class="link" routerLink="/admin-produtos-listar">Cancelar</a></p>
+  </form>
+</main>

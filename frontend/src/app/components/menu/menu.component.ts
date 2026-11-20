@@ -1,39 +1,42 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Carrinho } from '../../models/carrinho';
+import { ClienteService } from '../../services/cliente.service';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
   imports: [RouterLink],
-  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
+  private clienteService = inject(ClienteService);
+  private router = inject(Router);
+  carrinho = inject(CarrinhoService);
+
   itensMenu = [
     { label: 'Início', link: '/' },
     { label: 'Sobre', link: '/sobre' },
     { label: 'Contato', link: '/contato' }
   ];
 
-  constructor(private router: Router) {}
+  // Menu que só o administrador enxerga
+  itensAdmin = [
+    { label: 'Produtos', link: '/admin-produtos-listar' },
+    { label: 'Clientes', link: '/admin-clientes-listar' }
+  ];
 
-  usuarioLogado() {
-    const usuario = localStorage.getItem('usuario');
-    if (usuario) {
-      return usuario;
-    }
-    return '';
+  nomeUsuario(): string {
+    return this.clienteService.nomeLogado();
   }
 
-  itensNoCarrinho() {
-    const carrinho = new Carrinho();
-    return carrinho.contarItens();
+  ehAdmin(): boolean {
+    return this.clienteService.ehAdmin();
   }
 
   sair() {
-    localStorage.removeItem('usuario');
+    this.clienteService.sair();
     this.router.navigate(['/']);
   }
 }

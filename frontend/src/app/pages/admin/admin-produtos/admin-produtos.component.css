@@ -1,0 +1,62 @@
+.cabecalho {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.vazio {
+  margin-top: 28px;
+  color: #55534b;
+}
+
+.rolagem {
+  overflow-x: auto;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+.tabela th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 12px 10px 0;
+  border-bottom: 2px solid #111111;
+}
+
+.tabela td {
+  padding: 14px 12px 14px 0;
+  border-bottom: 1px solid #dddbd2;
+}
+
+.acao {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #111111;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.fraca {
+  color: #8a8576;
+  border-bottom-color: #cfcdc3;
+}
+
+@media (max-width: 800px) {
+  .cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .acao {
+    display: block;
+    margin: 0 0 6px;
+  }
+}

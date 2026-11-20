@@ -1,7 +1,11 @@
-import { ItemCarrinho } from './item-carrinho';
-import { Produto } from './produto';
+import { Injectable } from '@angular/core';
+import { ItemCarrinho } from '../model/item-carrinho';
+import { Produto } from '../model/produto';
 
-export class Carrinho {
+@Injectable({
+  providedIn: 'root'
+})
+export class CarrinhoService {
   itens: ItemCarrinho[] = [];
 
   constructor() {
@@ -16,14 +20,15 @@ export class Carrinho {
   }
 
   adicionar(produto: Produto) {
-    for (let item of this.itens) {
-      if (item.produto.id === produto.id) {
-        item.quantidade++;
+    // Se o produto já está no carrinho, só aumenta a quantidade
+    for (let i = 0; i < this.itens.length; i++) {
+      if (this.itens[i].produto.id === produto.id) {
+        this.itens[i].quantidade++;
         this.salvar();
         return;
       }
     }
-    this.itens.push(new ItemCarrinho(produto, 1));
+    this.itens.push({ produto: produto, quantidade: 1 });
     this.salvar();
   }
 
@@ -42,13 +47,11 @@ export class Carrinho {
   }
 
   remover(item: ItemCarrinho) {
-    const novosItens: ItemCarrinho[] = [];
-    for (let atual of this.itens) {
-      if (atual.produto.id !== item.produto.id) {
-        novosItens.push(atual);
+    for (let i = 0; i < this.itens.length; i++) {
+      if (this.itens[i].produto.id === item.produto.id) {
+        this.itens.splice(i, 1);
       }
     }
-    this.itens = novosItens;
     this.salvar();
   }
 
@@ -57,15 +60,16 @@ export class Carrinho {
     this.salvar();
   }
 
-  calcularSubtotal() {
+  calcularSubtotal(): number {
     let subtotal = 0;
-    for (let item of this.itens) {
-      subtotal += item.produto.preco * item.quantidade;
+    for (let i = 0; i < this.itens.length; i++) {
+      subtotal = subtotal + this.itens[i].produto.preco * this.itens[i].quantidade;
     }
     return subtotal;
   }
 
-  calcularFrete() {
+  // Frete grátis a partir de R$ 299
+  calcularFrete(): number {
     const subtotal = this.calcularSubtotal();
     if (subtotal === 0 || subtotal >= 299) {
       return 0;
@@ -73,14 +77,14 @@ export class Carrinho {
     return 29.9;
   }
 
-  calcularTotal() {
+  calcularTotal(): number {
     return this.calcularSubtotal() + this.calcularFrete();
   }
 
-  contarItens() {
+  contarItens(): number {
     let quantidade = 0;
-    for (let item of this.itens) {
-      quantidade += item.quantidade;
+    for (let i = 0; i < this.itens.length; i++) {
+      quantidade = quantidade + this.itens[i].quantidade;
     }
     return quantidade;
   }

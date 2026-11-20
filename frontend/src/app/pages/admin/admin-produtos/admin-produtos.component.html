@@ -1,0 +1,43 @@
+<main class="container pagina">
+  <div class="cabecalho">
+    <div>
+      <h1 class="titulo">Produtos.</h1>
+      <p class="texto-apoio">Cadastre, altere e exclua os produtos da loja.</p>
+    </div>
+    <button class="botao" type="button" routerLink="/produto-cadastro">Novo produto</button>
+  </div>
+
+  @if (listaProdutos.length === 0) {
+    <p class="vazio">Nenhum produto cadastrado.</p>
+  } @else {
+    <div class="rolagem">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Estoque</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (produto of listaProdutos; track produto.id) {
+            <tr>
+              <td class="mono">{{ produto.id }}</td>
+              <td>{{ produto.nome }}</td>
+              <td>{{ produto.categoria }}</td>
+              <td>{{ produto.preco | currency: 'BRL' }}</td>
+              <td class="mono">{{ produto.estoque }}</td>
+              <td>
+                <button class="acao" type="button" [routerLink]="['/admin-produtos-editar', produto.id]">editar</button>
+                <button class="acao fraca" type="button" (click)="excluir(produto)">excluir</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</main>

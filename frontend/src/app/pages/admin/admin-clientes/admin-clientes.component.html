@@ -1,0 +1,41 @@
+<main class="container pagina">
+  <div class="cabecalho">
+    <div>
+      <h1 class="titulo">Clientes.</h1>
+      <p class="texto-apoio">Gerencie os clientes cadastrados na loja.</p>
+    </div>
+    <button class="botao" type="button" routerLink="/registrar">Novo cliente</button>
+  </div>
+
+  @if (listaClientes.length === 0) {
+    <p class="vazio">Nenhum cliente cadastrado.</p>
+  } @else {
+    <div class="rolagem">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Perfil</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cliente of listaClientes; track cliente.id) {
+            <tr>
+              <td class="mono">{{ cliente.id }}</td>
+              <td>{{ cliente.nome }}</td>
+              <td>{{ cliente.email }}</td>
+              <td>{{ cliente.perfil }}</td>
+              <td>
+                <button class="acao" type="button" [routerLink]="['/admin-clientes-editar', cliente.id]">editar</button>
+                <button class="acao fraca" type="button" (click)="excluir(cliente)">excluir</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</main>

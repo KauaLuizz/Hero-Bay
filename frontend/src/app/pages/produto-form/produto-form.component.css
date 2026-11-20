@@ -1,0 +1,36 @@
+.formulario {
+  width: 420px;
+}
+
+.formulario .botao {
+  width: 100%;
+}
+
+.campo select {
+  background-color: #fffefb;
+  border: 1px solid #cfcdc3;
+  padding: 13px 14px;
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.previa {
+  width: 224px;
+  height: 168px;
+  margin-top: 32px;
+  object-fit: cover;
+}
+
+.depois {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #55534b;
+}
+
+@media (max-width: 800px) {
+  .formulario {
+    width: 100%;
+  }
+}

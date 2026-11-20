@@ -1,24 +1,23 @@
-<section class="lancamento">
-  <div class="container">
-    <h1 class="lancamento-titulo">Hero Bay One</h1>
-    <p class="lancamento-sub">O primeiro PC montado pela Hero Bay. Chega em novembro.</p>
-    <p class="lancamento-specs">{{ heroBayOne.descricao }}</p>
-    <p class="lancamento-preco">Pré-venda a partir de <b>{{ heroBayOne.preco | currency: 'BRL' }}</b> ou 12x de {{ heroBayOne.preco / 12 | currency: 'BRL' }}</p>
-    <div class="lancamento-links">
-      <button class="link" (click)="carrinho.adicionar(heroBayOne)">Reservar o meu</button>
-      <a class="link" href="#produtos">Ver produtos</a>
+@if (heroBayOne) {
+  <section class="lancamento">
+    <div class="container">
+      <h1 class="lancamento-titulo">{{ heroBayOne.nome }}</h1>
+      <p class="lancamento-sub">O primeiro PC montado pela Hero Bay. Chega em novembro.</p>
+      <p class="lancamento-specs">{{ heroBayOne.descricao }}</p>
+      <p class="lancamento-preco">Pré-venda a partir de <b>{{ heroBayOne.preco | currency: 'BRL' }}</b> ou 12x de {{ heroBayOne.preco / 12 | currency: 'BRL' }}</p>
+      <div class="lancamento-links">
+        <button class="link" (click)="carrinho.adicionar(heroBayOne)">Reservar o meu</button>
+        <a class="link" href="#produtos">Ver produtos</a>
+      </div>
+      <img class="lancamento-foto" [src]="heroBayOne.imagem" [alt]="heroBayOne.nome">
+      <div class="lancamento-rodape">
+        <span>Montado e testado à mão em São Paulo</span>
+        <span>3 anos de garantia</span>
+        <span>Frete grátis</span>
+      </div>
     </div>
-    @if (quantidadeNoCarrinho(heroBayOne) > 0) {
-      <p class="etiqueta">{{ quantidadeNoCarrinho(heroBayOne) }} no carrinho</p>
-    }
-    <img class="lancamento-foto" src="images/produtos/hero-bay-one.jpg" alt="Hero Bay One">
-    <div class="lancamento-rodape">
-      <span>Montado e testado à mão em São Paulo</span>
-      <span>3 anos de garantia</span>
-      <span>Frete grátis</span>
-    </div>
-  </div>
-</section>
+  </section>
+}
 
 <section class="container categorias">
   @for (categoria of categorias; track categoria) {
@@ -27,20 +26,17 @@
 </section>
 
 <section class="container vitrine" id="produtos">
-  @for (produto of produtos; track produto) {
-    @if (categoriaSelecionada === 'todos' || produto.categoria === categoriaSelecionada) {
+  @for (produto of produtos; track produto.id) {
+    @if (produto.categoria !== 'pc' && (categoriaSelecionada === 'todos' || produto.categoria === categoriaSelecionada)) {
       <div class="produto">
         <img [src]="produto.imagem" [alt]="produto.nome">
         <div class="produto-info">
           <div>
             <p class="produto-nome">{{ produto.nome }}</p>
             <p class="produto-preco">{{ produto.preco | currency: 'BRL' }}</p>
-            @if (quantidadeNoCarrinho(produto) > 0) {
-              <span class="etiqueta">{{ quantidadeNoCarrinho(produto) }} no carrinho</span>
-            }
             <p class="produto-spec">{{ produto.descricao }}</p>
           </div>
-          <button class="mais" (click)="carrinho.adicionar(produto)">+</button>
+          <button class="mais" (click)="carrinho.adicionar(produto)" [disabled]="produto.estoque === 0">+</button>
         </div>
       </div>
     }

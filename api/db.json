@@ -1,0 +1,111 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Placa de vídeo RTX 2080 Super",
+      "preco": 2199,
+      "categoria": "placas de vídeo",
+      "descricao": "8 GB de memória e duas ventoinhas.",
+      "imagem": "images/produtos/gpu.jpg",
+      "estoque": 10
+    },
+    {
+      "id": 2,
+      "nome": "Teclado mecânico 60%",
+      "preco": 349,
+      "categoria": "teclados",
+      "descricao": "Compacto, com luz RGB e cabo USB-C.",
+      "imagem": "images/produtos/teclado.jpg",
+      "estoque": 15
+    },
+    {
+      "id": 3,
+      "nome": "Mouse gamer sem fio",
+      "preco": 189.9,
+      "categoria": "mouses",
+      "descricao": "Pesa só 60 g e a bateria dura até 70 horas.",
+      "imagem": "images/produtos/mouse.jpg",
+      "estoque": 20
+    },
+    {
+      "id": 4,
+      "nome": "Watercooler 360 mm",
+      "preco": 599,
+      "categoria": "refrigeração",
+      "descricao": "Três ventoinhas, serve em Intel e AMD.",
+      "imagem": "images/produtos/watercooler-360.jpg",
+      "estoque": 8
+    },
+    {
+      "id": 5,
+      "nome": "Cooler de torre dupla",
+      "preco": 279,
+      "categoria": "refrigeração",
+      "descricao": "Seis heatpipes e duas ventoinhas.",
+      "imagem": "images/produtos/cooler.jpg",
+      "estoque": 12
+    },
+    {
+      "id": 6,
+      "nome": "Headphone Bluetooth preto",
+      "preco": 429,
+      "categoria": "áudio",
+      "descricao": "Cancela ruído e a bateria dura 40 horas.",
+      "imagem": "images/produtos/headphone.jpg",
+      "estoque": 9
+    },
+    {
+      "id": 7,
+      "nome": "Headphone de estúdio",
+      "preco": 899,
+      "categoria": "áudio",
+      "descricao": "Acabamento em aço escovado e 60 horas de bateria.",
+      "imagem": "images/produtos/headphone-estudio.jpg",
+      "estoque": 4
+    },
+    {
+      "id": 8,
+      "nome": "Headphone Bluetooth bege",
+      "preco": 399,
+      "categoria": "áudio",
+      "descricao": "Dobrável, com 35 horas de bateria.",
+      "imagem": "images/produtos/headphone-bege.jpg",
+      "estoque": 7
+    },
+    {
+      "id": 9,
+      "nome": "Watercooler 360 ARGB",
+      "preco": 749,
+      "categoria": "refrigeração",
+      "descricao": "Luz ARGB e uma telinha na bomba.",
+      "imagem": "images/produtos/watercooler.jpg",
+      "estoque": 6
+    },
+    {
+      "id": 10,
+      "nome": "Hero Bay One",
+      "preco": 8999,
+      "categoria": "pc",
+      "descricao": "Vem com placa de vídeo GeForce RTX, 32 GB de memória, SSD de 2 TB e watercooler de 360 mm.",
+      "imagem": "images/produtos/hero-bay-one.jpg",
+      "estoque": 20
+    }
+  ],
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "Administrador",
+      "email": "admin@email.com",
+      "senha": "123",
+      "perfil": "admin"
+    },
+    {
+      "id": 2,
+      "nome": "Ana",
+      "email": "ana@email.com",
+      "senha": "123",
+      "perfil": "cliente"
+    }
+  ],
+  "pedidos": []
+}
