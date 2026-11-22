@@ -1,0 +1,6 @@
+{
+  "clientes": [
+    { "id": 1, "nome": "Administrador", "sobrenome": "Hero Bay", "cpf": "00000000000", "dtNascimento": "2000-01-01", "email": "admin@email.com", "senha": "123", "perfil": "admin" },
+    { "id": 2, "nome": "Ana", "sobrenome": "Santos", "cpf": "12345678910", "dtNascimento": "2007-08-14", "email": "ana@email.com", "senha": "123", "perfil": "cliente" }
+  ]
+}
