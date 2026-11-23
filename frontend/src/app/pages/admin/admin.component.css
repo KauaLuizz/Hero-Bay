@@ -18,10 +18,11 @@
   color: #111111;
 }
 
-.abas .ativa {
+.abas button:disabled {
   color: #111111;
   border-bottom-color: #111111;
   font-weight: 600;
+  cursor: default;
 }
 
 .rolagem {

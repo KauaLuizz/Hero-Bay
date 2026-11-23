@@ -62,23 +62,31 @@ export class ClienteFormComponent implements OnInit {
             }
           }
 
-          this.service.incluir(this.usuario).subscribe({
-            next: (usuario) => {
-              this.usuario = usuario;
-              const carrinho = new Carrinho();
-              carrinho.id = usuario.id;
-
-              this.carrinhoService.incluir(carrinho).subscribe({
-                next: () => {
-                  alert(`Cliente ${this.usuario.nome} cadastrado com sucesso!`);
-                  this.router.navigate(['/admin']);
-                },
-                error: () => alert('Erro ao cadastrar o cliente.')
-              });
-            }
-          });
+          this.incluirCliente();
         }
       });
     }
+  }
+
+  incluirCliente() {
+    this.service.incluir(this.usuario).subscribe({
+      next: (usuario) => {
+        this.usuario = usuario;
+        this.criarCarrinho();
+      }
+    });
+  }
+
+  criarCarrinho() {
+    const carrinho = new Carrinho();
+    carrinho.id = this.usuario.id;
+
+    this.carrinhoService.incluir(carrinho).subscribe({
+      next: () => {
+        alert(`Cliente ${this.usuario.nome} cadastrado com sucesso!`);
+        this.router.navigate(['/admin']);
+      },
+      error: () => alert('Erro ao cadastrar o cliente.')
+    });
   }
 }

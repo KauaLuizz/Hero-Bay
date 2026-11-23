@@ -52,32 +52,38 @@ export class RegistrarComponent {
           }
         }
 
-        const novo = new Usuario(nome, email, this.senha);
-
-        this.service.incluir(novo).subscribe({
-          next: (usuarioCriado) => {
-            const carrinho = new Carrinho();
-            carrinho.id = usuarioCriado.id;
-
-            this.carrinhoService.incluir(carrinho).subscribe({
-              next: () => {
-                localStorage.setItem('usuario', usuarioCriado.nome);
-                localStorage.setItem('usuarioId', `${usuarioCriado.id}`);
-                this.carrinhoService.carregar();
-                this.router.navigate(['/']);
-              },
-              error: () => {
-                this.mensagemErro = 'Não foi possível concluir o cadastro. Tente novamente.';
-              }
-            });
-          },
-          error: () => {
-            this.mensagemErro = 'Não foi possível concluir o cadastro. Tente novamente.';
-          }
-        });
+        this.criarUsuario(new Usuario(nome, email, this.senha));
       },
       error: () => {
         this.mensagemErro = 'Não foi possível conectar à API. Verifique se ela está rodando.';
+      }
+    });
+  }
+
+  criarUsuario(usuario: Usuario) {
+    this.service.incluir(usuario).subscribe({
+      next: (usuarioCriado) => {
+        this.criarCarrinho(usuarioCriado);
+      },
+      error: () => {
+        this.mensagemErro = 'Não foi possível concluir o cadastro. Tente novamente.';
+      }
+    });
+  }
+
+  criarCarrinho(usuario: Usuario) {
+    const carrinho = new Carrinho();
+    carrinho.id = usuario.id;
+
+    this.carrinhoService.incluir(carrinho).subscribe({
+      next: () => {
+        localStorage.setItem('usuario', usuario.nome);
+        localStorage.setItem('usuarioId', `${usuario.id}`);
+        this.carrinhoService.carregar();
+        this.router.navigate(['/']);
+      },
+      error: () => {
+        this.mensagemErro = 'Não foi possível concluir o cadastro. Tente novamente.';
       }
     });
   }

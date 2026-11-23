@@ -44,7 +44,7 @@ export class AdminComponent implements OnInit {
   }
 
   registrarAtividade(texto: string) {
-    this.atividades.push(`${new Date().toLocaleString('pt-BR')} - ${texto}`);
+    this.atividades.push(texto);
   }
 
   excluirProduto(produto: Produto) {

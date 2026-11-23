@@ -80,8 +80,10 @@
   border-bottom-color: #cfcdc3;
 }
 
-.categorias .ativa {
+.categorias button:disabled {
+  color: #111111;
   border-bottom-color: #111111;
+  cursor: default;
 }
 
 .vitrine {

@@ -3,9 +3,9 @@
   <p class="texto-apoio">Cadastre e altere os produtos e os clientes da loja.</p>
 
   <nav class="abas">
-    <button [class.ativa]="secaoAtiva === 'produtos'" (click)="mostrarSecao('produtos')">Produtos</button>
-    <button [class.ativa]="secaoAtiva === 'clientes'" (click)="mostrarSecao('clientes')">Clientes</button>
-    <button [class.ativa]="secaoAtiva === 'atividades'" (click)="mostrarSecao('atividades')">Atividades</button>
+    <button [disabled]="secaoAtiva === 'produtos'" (click)="mostrarSecao('produtos')">Produtos</button>
+    <button [disabled]="secaoAtiva === 'clientes'" (click)="mostrarSecao('clientes')">Clientes</button>
+    <button [disabled]="secaoAtiva === 'atividades'" (click)="mostrarSecao('atividades')">Atividades</button>
   </nav>
 
   @if (secaoAtiva === 'produtos') {

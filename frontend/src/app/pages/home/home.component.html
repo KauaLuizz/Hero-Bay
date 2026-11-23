@@ -22,7 +22,7 @@
 
 <section class="container categorias">
   @for (categoria of categorias; track categoria) {
-    <button [class.ativa]="categoriaSelecionada === categoria" (click)="escolherCategoria(categoria)">{{ categoria }}</button>
+    <button [disabled]="categoriaSelecionada === categoria" (click)="escolherCategoria(categoria)">{{ categoria }}</button>
   }
 </section>
 
