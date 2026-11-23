@@ -14,4 +14,8 @@ export class UsuarioService {
   listar(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.API);
   }
+
+  incluir(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.API, usuario);
+  }
 }
