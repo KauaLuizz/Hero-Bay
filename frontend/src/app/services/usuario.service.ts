@@ -18,4 +18,16 @@ export class UsuarioService {
   incluir(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(this.API, usuario);
   }
+
+  excluir(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.API}/${id}`);
+  }
+
+  buscarPorId(id: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.API}/${id}`);
+  }
+
+  editar(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.API}/${usuario.id}`, usuario);
+  }
 }

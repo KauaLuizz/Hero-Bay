@@ -1,0 +1,18 @@
+.formulario {
+  width: 420px;
+}
+
+.formulario .botao {
+  width: 100%;
+}
+
+.depois {
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+@media (max-width: 800px) {
+  .formulario {
+    width: 100%;
+  }
+}

@@ -5,7 +5,7 @@
     <p class="lancamento-specs">{{ heroBayOne.descricao }}</p>
     <p class="lancamento-preco">Pré-venda a partir de <b>{{ heroBayOne.preco | currency: 'BRL' }}</b> ou 12x de {{ heroBayOne.preco / 12 | currency: 'BRL' }}</p>
     <div class="lancamento-links">
-      <button class="link" (click)="carrinho.adicionar(heroBayOne)">Reservar o meu</button>
+      <button class="link" (click)="adicionar(heroBayOne)">Reservar o meu</button>
       <a class="link" href="#produtos">Ver produtos</a>
     </div>
     @if (quantidadeNoCarrinho(heroBayOne) > 0) {
@@ -27,7 +27,7 @@
 </section>
 
 <section class="container vitrine" id="produtos">
-  @for (produto of produtos; track produto) {
+  @for (produto of produtos; track produto.id) {
     @if (categoriaSelecionada === 'todos' || produto.categoria === categoriaSelecionada) {
       <div class="produto">
         <img [src]="produto.imagem" [alt]="produto.nome">
@@ -40,7 +40,7 @@
             }
             <p class="produto-spec">{{ produto.descricao }}</p>
           </div>
-          <button class="mais" (click)="carrinho.adicionar(produto)">+</button>
+          <button class="mais" (click)="adicionar(produto)">+</button>
         </div>
       </div>
     }

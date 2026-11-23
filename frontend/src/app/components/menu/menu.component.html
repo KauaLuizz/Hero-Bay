@@ -1,14 +1,19 @@
 <header class="topo">
   <div class="container topo-conteudo">
+    <a class="logo" routerLink="/"><img src="images/logo-hero-bay.png" alt="Hero Bay">Hero Bay</a>
+
     @if (usuarioLogado() === 'admin') {
-      <span class="logo"><img src="images/logo-hero-bay.png" alt="Hero Bay">Hero Bay</span>
+      <nav class="navegacao">
+        <a routerLink="/">Loja</a>
+        <a routerLink="/admin">Painel</a>
+      </nav>
+
       <div class="acoes">
         <span class="fraco">Administrador</span>
         <button class="sair" (click)="sair()">Sair</button>
+        <a routerLink="/carrinho"><b>Carrinho</b> ({{ itensNoCarrinho() }})</a>
       </div>
     } @else {
-      <a class="logo" routerLink="/"><img src="images/logo-hero-bay.png" alt="Hero Bay">Hero Bay</a>
-
       <nav class="navegacao">
         @for (item of itensMenu; track item) {
           <a [routerLink]="item.link">{{ item.label }}</a>
@@ -21,8 +26,8 @@
         } @else {
           <span class="fraco">Olá, {{ usuarioLogado() }}</span>
           <button class="sair" (click)="sair()">Sair</button>
+          <a routerLink="/carrinho"><b>Carrinho</b> ({{ itensNoCarrinho() }})</a>
         }
-        <a routerLink="/carrinho"><b>Carrinho</b> ({{ itensNoCarrinho() }})</a>
       </div>
     }
   </div>

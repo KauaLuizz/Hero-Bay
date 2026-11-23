@@ -24,30 +24,6 @@
   font-weight: 600;
 }
 
-.formulario {
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
-}
-
-.formulario .campo {
-  flex: 1;
-  margin-bottom: 0;
-}
-
-.formulario .campo-pequeno {
-  flex: none;
-  width: 150px;
-}
-
-.formulario .link {
-  margin-bottom: 15px;
-}
-
-.erro {
-  margin: 12px 0 0;
-}
-
 .rolagem {
   overflow-x: auto;
 }
@@ -87,18 +63,6 @@
   border-bottom-color: #cfcdc3;
 }
 
-.perigo {
-  color: #b42318;
-  border-bottom-color: #b42318;
-  font-weight: 700;
-}
-
-.nota {
-  margin-top: 12px;
-  font-size: 13px;
-  color: #8a8576;
-}
-
 .vazio {
   margin-top: 28px;
   color: #55534b;
@@ -116,15 +80,6 @@
 }
 
 @media (max-width: 800px) {
-  .formulario {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .formulario .campo-pequeno {
-    width: 100%;
-  }
-
   .acao {
     display: block;
     margin: 0 0 6px;

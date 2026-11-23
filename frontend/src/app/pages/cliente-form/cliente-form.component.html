@@ -1,0 +1,34 @@
+<main class="container pagina duas-colunas">
+  <div class="coluna">
+    <h1 class="titulo">Cadastro de cliente.</h1>
+    <p class="texto-apoio">O cliente usa este e-mail e esta senha para entrar na loja.</p>
+  </div>
+
+  <form class="formulario">
+    @if (clienteId) {
+      <div class="campo">
+        <label for="id">ID</label>
+        <input id="id" name="id" type="text" [ngModel]="usuario.id" disabled>
+      </div>
+    }
+
+    <div class="campo">
+      <label for="nome">Nome</label>
+      <input id="nome" name="nome" type="text" [(ngModel)]="usuario.nome">
+    </div>
+
+    <div class="campo">
+      <label for="email">E-mail</label>
+      <input id="email" name="email" type="email" [(ngModel)]="usuario.email" [disabled]="clienteId !== null">
+    </div>
+
+    <div class="campo">
+      <label for="senha">Senha</label>
+      <input id="senha" name="senha" type="password" autocomplete="new-password" [(ngModel)]="usuario.senha">
+    </div>
+
+    <button class="botao" type="button" (click)="salvar()">Salvar</button>
+
+    <p class="depois"><a class="link" routerLink="/admin">Voltar ao painel</a></p>
+  </form>
+</main>

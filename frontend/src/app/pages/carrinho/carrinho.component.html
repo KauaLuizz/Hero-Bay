@@ -36,12 +36,12 @@
               <p class="item-spec">{{ item.produto.descricao }}</p>
             </div>
             <div class="quantidade">
-              <button (click)="carrinho.diminuir(item)" aria-label="Diminuir quantidade">−</button>
+              <button (click)="diminuir(item)" aria-label="Diminuir quantidade">−</button>
               <span class="mono">{{ item.quantidade }}</span>
-              <button (click)="carrinho.aumentar(item)" aria-label="Aumentar quantidade">+</button>
+              <button (click)="aumentar(item)" aria-label="Aumentar quantidade">+</button>
             </div>
             <span class="item-total">{{ item.produto.preco * item.quantidade | currency: 'BRL' }}</span>
-            <button class="remover" (click)="carrinho.remover(item)">remover</button>
+            <button class="remover" (click)="remover(item)">remover</button>
           </article>
         }
       </section>

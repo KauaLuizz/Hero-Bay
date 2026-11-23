@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Carrinho } from '../../models/carrinho';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @Component({
   selector: 'app-menu',
@@ -17,7 +17,7 @@ export class MenuComponent {
     { label: 'Contato', link: '/contato' }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private carrinhoService: CarrinhoService) {}
 
   usuarioLogado() {
     const usuario = localStorage.getItem('usuario');
@@ -28,12 +28,13 @@ export class MenuComponent {
   }
 
   itensNoCarrinho() {
-    const carrinho = new Carrinho();
-    return carrinho.contarItens();
+    return this.carrinhoService.carrinho.contarItens();
   }
 
   sair() {
     localStorage.removeItem('usuario');
+    localStorage.removeItem('usuarioId');
+    this.carrinhoService.carregar();
     this.router.navigate(['/']);
   }
 }
