@@ -1,145 +1,181 @@
-:host {
+﻿:host {
   display: block;
-  min-height: 100vh;
-  background-color: #0d0f14;
-  color: #ffffff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 40px 20px;
+  background: var(--bg);
+  color: var(--texto);
 }
 
 .contact-container {
-  max-width: 1100px;
+  max-width: 1168px;
   margin: 0 auto;
+  padding: 64px 24px 96px;
 }
 
 .contact-header {
-  text-align: center;
-  margin-bottom: 40px;
+  max-width: 640px;
+  margin-bottom: 56px;
 }
 
 .contact-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+  margin: 0 0 20px;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -1.6px;
+  line-height: 1.12;
+  text-wrap: balance;
 }
 
 .highlight {
-  color: #7c4dff;
+  color: inherit;
 }
 
 .contact-header p {
-  color: #a0a5b5;
-  font-size: 1.1rem;
+  color: var(--texto-suave);
+  font-size: 16px;
+  line-height: 1.75;
 }
 
-/* Grid de cards */
 .contact-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 7vw, 96px);
+  align-items: start;
 }
 
-@media (max-width: 768px) {
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
+.info-card,
+.form-card {
+  min-width: 0;
 }
 
-.info-card, .form-card {
-  background-color: #161922;
-  border: 1px solid #232736;
-  border-radius: 12px;
-  padding: 30px;
+.form-card {
+  padding: 32px;
+  background: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
 }
 
-.info-card h2, .form-card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 25px;
-  color: #ffffff;
-  border-bottom: 2px solid #232736;
-  padding-bottom: 10px;
+.info-card h2,
+.form-card h2 {
+  margin: 0 0 28px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
 }
 
-/* Itens de informação */
 .info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  margin-bottom: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--borda);
+}
+
+.info-item:last-child {
+  padding-bottom: 0;
 }
 
 .info-item .icon {
-  font-size: 1.4rem;
-  background-color: #202433;
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
+  display: none;
 }
 
 .info-item h3 {
-  font-size: 1rem;
-  color: #7c4dff;
-  margin: 0 0 4px 0;
+  margin: 0 0 6px;
+  color: var(--texto);
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.info-item p, .info-item a {
-  color: #d1d5db;
+.info-item p,
+.info-item a {
   margin: 0;
-  font-size: 0.95rem;
-  text-decoration: none;
+  color: var(--texto-suave);
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.info-item a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--roxo);
+  text-underline-offset: 4px;
 }
 
 .info-item a:hover {
-  color: #a88eff;
-  text-decoration: underline;
+  color: var(--texto);
 }
 
-/* Formulário */
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .form-group label {
   display: block;
-  font-size: 0.9rem;
-  color: #a0a5b5;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
+  color: var(--texto);
+  font-size: 13px;
+  font-weight: 500;
 }
 
-.form-group input, .form-group textarea {
+.form-group input,
+.form-group textarea {
   width: 100%;
-  padding: 12px 15px;
-  background-color: #0d0f14;
-  border: 1px solid #2f3548;
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: 0.95rem;
-  box-sizing: border-box;
-  outline: none;
-  transition: border-color 0.2s;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid #b9bcb3;
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--texto);
+  font: 400 16px/1.5 var(--font-body);
 }
 
-.form-group input:focus, .form-group textarea:focus {
-  border-color: #7c4dff;
+.form-group textarea {
+  min-height: 148px;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--texto-suave);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--roxo);
+  outline-offset: 3px;
 }
 
 .btn-send {
   width: 100%;
-  padding: 14px;
-  background-color: #6c5ce7;
+  min-height: 48px;
+  padding: 13px 20px;
+  background: var(--texto);
   color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font: 500 14px/1.4 var(--font-body);
   cursor: pointer;
-  transition: background-color 0.2s;
+  touch-action: manipulation;
 }
 
 .btn-send:hover {
-  background-color: #5b4cc4;
+  background: var(--roxo);
+}
+
+@media (max-width: 760px) {
+  .contact-container {
+    padding: 40px 20px 64px;
+  }
+
+  .contact-header {
+    margin-bottom: 36px;
+  }
+
+  .contact-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .form-card {
+    padding: 24px;
+  }
 }

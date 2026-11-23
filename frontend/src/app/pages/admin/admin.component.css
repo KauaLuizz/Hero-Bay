@@ -1,55 +1,68 @@
+:host {
+    display: block;
+}
+
 .painel-admin {
-    max-width: 1100px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 64px 32px 80px;
     color: var(--texto);
+    font-family: var(--font-body);
 }
 
 .cabecalho-admin {
-    margin-bottom: 28px;
+    margin-bottom: 36px;
 }
 
 .cabecalho-admin h1 {
-    margin-bottom: 8px;
-    font-family: 'plus-jakarta-bold', sans-serif;
-    font-size: 28px;
+    margin: 0 0 12px;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
 }
 
 .cabecalho-admin p {
+    margin: 0;
     color: var(--texto-suave);
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.7;
 }
 
 .menu-admin {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 24px;
+    gap: 28px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--borda);
 }
 
 .menu-admin button {
-    padding: 12px 24px;
-    background-color: var(--card);
-    color: var(--texto);
-    border: 1px solid var(--borda);
-    border-radius: 10px;
+    min-height: 48px;
+    padding: 12px 2px 15px;
+    margin-bottom: -1px;
+    background: transparent;
+    color: var(--texto-suave);
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
     font: inherit;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease;
+    transition: color 160ms ease, border-color 160ms ease;
 }
 
 .menu-admin button:hover {
-    background-color: var(--card-2);
-    border-color: var(--roxo-claro);
+    color: var(--texto);
+    border-bottom-color: var(--borda);
 }
 
 .menu-admin button.ativo {
-    background-color: var(--roxo);
-    border-color: var(--roxo);
-    color: #ffffff;
+    color: var(--texto);
+    border-bottom-color: var(--texto);
+    font-weight: 600;
 }
 
 .menu-admin button:focus-visible {
@@ -58,35 +71,45 @@
 }
 
 .secao-admin {
-    padding: 24px;
+    min-width: 0;
+    padding: 32px;
     background-color: var(--card);
     border: 1px solid var(--borda);
-    border-radius: 12px;
+    border-radius: 4px;
 }
 
 .secao-admin h2 {
-    margin-bottom: 8px;
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
 }
 
 .secao-admin p {
+    margin: 0 0 28px;
     color: var(--texto-suave);
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.7;
 }
 
 .tabela-container {
+    max-width: 100%;
     overflow-x: auto;
 }
 
 .tabela-produtos {
     width: 100%;
+    min-width: 540px;
     border-collapse: collapse;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
 }
 
 .tabela-produtos caption {
+    color: var(--texto);
     text-align: left;
     font-weight: 600;
-    padding-bottom: 12px;
+    padding-bottom: 16px;
 }
 
 .tabela-produtos th,
@@ -94,16 +117,24 @@
     padding: 16px;
     text-align: left;
     border-bottom: 1px solid var(--borda);
+    line-height: 1.5;
 }
 
 .tabela-produtos th {
-    background-color: var(--card-2);
-    color: var(--roxo-claro);
-    font-size: 14px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: var(--bg);
+    color: var(--texto-suave);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tabela-produtos td {
+    overflow-wrap: anywhere;
 }
 
 .tabela-produtos tbody tr:hover {
-    background-color: var(--card-2);
+    background-color: var(--bg);
 }
 
 .tabela-produtos tbody tr:last-child td {
@@ -112,13 +143,11 @@
 
 .form-produto {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 16px;
-    padding: 20px;
-    margin-bottom: 24px;
-    background-color: var(--bg);
-    border: 1px solid var(--borda);
-    border-radius: 10px;
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+    padding: 0 0 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--borda);
 }
 
 .campo-produto {
@@ -129,18 +158,28 @@
 }
 
 .campo-produto label {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
+    line-height: 1.5;
 }
 
 .campo-produto input {
+    box-sizing: border-box;
     width: 100%;
+    min-width: 0;
+    min-height: 46px;
     padding: 12px;
     background-color: var(--card);
     color: var(--texto);
     border: 1px solid var(--borda);
-    border-radius: 8px;
+    border-radius: 3px;
     font: inherit;
+    font-size: 14px;
+}
+
+.campo-produto input::placeholder {
+    color: var(--texto-suave);
+    opacity: 1;
 }
 
 .campo-produto input:focus {
@@ -150,26 +189,29 @@
 
 .form-produto .mensagem-erro {
     grid-column: 1 / -1;
-    color: #fca5a5;
+    color: #a92d2d;
     margin: 0;
 }
 
 .botao-adicionar {
     grid-column: 1 / -1;
     justify-self: start;
-    padding: 12px 20px;
-    background-color: var(--roxo);
+    min-height: 46px;
+    padding: 12px 22px;
+    background-color: var(--texto);
     color: #ffffff;
-    border: 1px solid transparent;
-    border-radius: 8px;
+    border: 1px solid var(--texto);
+    border-radius: 3px;
     font: inherit;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
+    transition: background-color 160ms ease, border-color 160ms ease;
 }
 
 .botao-adicionar:hover {
-    border-color: var(--roxo-claro);
-    background-color: var(--card-2);
+    border-color: var(--roxo);
+    background-color: var(--roxo);
 }
 
 .botao-adicionar:focus-visible {
@@ -178,7 +220,50 @@
 }
 
 @media (max-width: 700px) {
+    .painel-admin {
+        padding: 40px 20px 56px;
+    }
+
+    .cabecalho-admin {
+        margin-bottom: 24px;
+    }
+
+    .secao-admin {
+        padding: 24px 20px;
+    }
+
     .form-produto {
         grid-template-columns: 1fr;
+    }
+
+    .campo-produto input {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .painel-admin {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .menu-admin {
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    .secao-admin {
+        padding: 20px 16px;
+    }
+
+    .botao-adicionar {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu-admin button,
+    .botao-adicionar {
+        transition: none;
     }
 }

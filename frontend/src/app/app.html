@@ -1,5 +1,8 @@
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 @if (mostrarMenu()) {
     <app-menu></app-menu>
 }
-<router-outlet></router-outlet>
+<div class="page-content" id="conteudo" tabindex="-1">
+    <router-outlet></router-outlet>
+</div>
 <app-footer></app-footer>
