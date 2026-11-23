@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Produto } from '../../../model/produto';
@@ -8,6 +8,7 @@ import { ClienteService } from '../../../services/cliente.service';
 @Component({
   selector: 'app-admin-produtos',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CurrencyPipe, RouterLink],
   templateUrl: './admin-produtos.component.html',
   styleUrl: './admin-produtos.component.css'

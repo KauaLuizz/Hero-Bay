@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Cliente } from '../../model/cliente';
@@ -7,6 +7,7 @@ import { ClienteService } from '../../services/cliente.service';
 @Component({
   selector: 'app-cliente-form',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, RouterLink],
   templateUrl: './cliente-form.component.html',
   styleUrl: './cliente-form.component.css'

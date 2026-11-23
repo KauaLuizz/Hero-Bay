@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ItemCarrinho } from '../../model/item-carrinho';
@@ -10,6 +10,7 @@ import { PedidoService } from '../../services/pedido.service';
 @Component({
   selector: 'app-carrinho',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CurrencyPipe, RouterLink],
   templateUrl: './carrinho.component.html',
   styleUrl: './carrinho.component.css'

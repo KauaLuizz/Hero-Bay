@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ClienteService } from '../../services/cliente.service';
 import { CarrinhoService } from '../../services/carrinho.service';
@@ -6,6 +6,7 @@ import { CarrinhoService } from '../../services/carrinho.service';
 @Component({
   selector: 'app-menu',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RouterLink],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'

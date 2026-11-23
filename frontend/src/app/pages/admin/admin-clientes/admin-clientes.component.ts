@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Cliente } from '../../../model/cliente';
 import { ClienteService } from '../../../services/cliente.service';
@@ -6,6 +6,7 @@ import { ClienteService } from '../../../services/cliente.service';
 @Component({
   selector: 'app-admin-clientes',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RouterLink],
   templateUrl: './admin-clientes.component.html',
   styleUrl: './admin-clientes.component.css'

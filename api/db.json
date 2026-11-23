@@ -89,6 +89,15 @@
       "descricao": "Vem com placa de vídeo GeForce RTX, 32 GB de memória, SSD de 2 TB e watercooler de 360 mm.",
       "imagem": "images/produtos/hero-bay-one.jpg",
       "estoque": 20
+    },
+    {
+      "nome": "Mouse",
+      "preco": 100,
+      "categoria": "mouses",
+      "descricao": "X11 PRO",
+      "imagem": "images/produtos/mouse.jpg",
+      "estoque": 3,
+      "id": 11
     }
   ],
   "clientes": [

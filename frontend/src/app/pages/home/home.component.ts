@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { Produto } from '../../model/produto';
 import { ProdutoService } from '../../services/produto.service';
@@ -7,6 +7,7 @@ import { CarrinhoService } from '../../services/carrinho.service';
 @Component({
   selector: 'app-home',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CurrencyPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
