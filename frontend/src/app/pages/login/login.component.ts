@@ -46,7 +46,10 @@ export class LoginComponent {
             return;
           }
         }
-        this.mensagemErro = 'E-mail ou senha incorretos!';
+                this.mensagemErro = 'E-mail ou senha incorretos!';
+      },
+      error: () => {
+        this.mensagemErro = 'Não foi possível acessar a API. Ela está rodando?';
       }
     });
   }
