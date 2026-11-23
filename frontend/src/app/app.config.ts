@@ -13,6 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection(),
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     provideRouter(routes),
-    provideHttpClient() // habilita chamadas HTTP (API) em toda a aplicação
+    provideHttpClient() 
   ]
 };

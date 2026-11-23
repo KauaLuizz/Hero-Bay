@@ -17,14 +17,14 @@ export class AdminClientesComponent implements OnInit {
   listaClientes: Cliente[] = [];
 
   ngOnInit(): void {
-    // Só o administrador pode ver esta tela
+   
     if (!this.service.exigirAdmin()) {
       return;
     }
     this.carregar();
   }
 
-  // Busca os clientes na API e guarda na lista da tela
+  
   carregar() {
     this.service.listar().subscribe({
       next: (clientes) => {
@@ -34,7 +34,6 @@ export class AdminClientesComponent implements OnInit {
   }
 
   excluir(cliente: Cliente) {
-    // Se excluíssemos o administrador, ninguém mais entraria no painel
     if (cliente.perfil === 'admin') {
       alert('O administrador não pode ser excluído.');
       return;

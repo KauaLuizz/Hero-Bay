@@ -21,13 +21,13 @@ export class ProdutoFormComponent implements OnInit {
 
   categorias = ['placas de vídeo', 'teclados', 'mouses', 'áudio', 'refrigeração', 'pc'];
 
-  // Fotos que já existem na pasta public/images/produtos
+  
   imagens = [
     'cooler.jpg', 'gpu.jpg', 'headphone.jpg', 'headphone-bege.jpg', 'headphone-estudio.jpg',
     'hero-bay-one.jpg', 'mouse.jpg', 'teclado.jpg', 'watercooler.jpg', 'watercooler-360.jpg'
   ];
 
-  // Objeto que guarda os dados do formulário
+  
   produto: Produto = {
     nome: '',
     preco: 0,
@@ -38,11 +38,10 @@ export class ProdutoFormComponent implements OnInit {
   };
   mensagemErro: string = '';
 
-  // Se a rota tiver um id, estamos alterando um produto que já existe
+ 
   produtoId: string | null = this.route.snapshot.paramMap.get('id');
 
   ngOnInit() {
-    // Só o administrador pode mexer nos produtos
     if (!this.clienteService.exigirAdmin()) {
       return;
     }

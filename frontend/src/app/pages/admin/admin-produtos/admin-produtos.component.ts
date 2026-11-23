@@ -20,14 +20,14 @@ export class AdminProdutosComponent implements OnInit {
   listaProdutos: Produto[] = [];
 
   ngOnInit(): void {
-    // Só o administrador pode ver esta tela
+  
     if (!this.clienteService.exigirAdmin()) {
       return;
     }
     this.carregar();
   }
 
-  // Busca os produtos na API e guarda na lista da tela
+
   carregar() {
     this.service.listar().subscribe({
       next: (produtos) => {

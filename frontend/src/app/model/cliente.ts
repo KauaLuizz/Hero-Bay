@@ -3,5 +3,5 @@ export interface Cliente {
   nome: string;
   email: string;
   senha: string;
-  perfil: string; // 'admin' ou 'cliente'
+  perfil: string; 
 }

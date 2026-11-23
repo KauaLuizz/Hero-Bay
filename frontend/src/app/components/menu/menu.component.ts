@@ -22,7 +22,6 @@ export class MenuComponent {
     { label: 'Contato', link: '/contato' }
   ];
 
-  // Menu que só o administrador enxerga
   itensAdmin = [
     { label: 'Produtos', link: '/admin-produtos-listar' },
     { label: 'Clientes', link: '/admin-clientes-listar' }

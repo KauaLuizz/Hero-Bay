@@ -33,7 +33,6 @@ export class ClienteService {
     return this.http.delete<void>(`${this.API}/${id}`);
   }
 
-  // ---- Quem está logado (guardado no navegador, como no Space Code) ----
 
   entrar(cliente: Cliente) {
     localStorage.setItem('usuarioLogado', cliente.nome);

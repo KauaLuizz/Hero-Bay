@@ -17,20 +17,17 @@ export class ClienteFormComponent implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
-  // Objeto que guarda os dados do formulário
+ 
   cliente: Cliente = { nome: '', email: '', senha: '', perfil: 'cliente' };
   confirmarSenha: string = '';
   mensagemErro: string = '';
 
-  // Clientes que já existem (para não repetir e-mail)
   listaClientes: Cliente[] = [];
 
-  // Se a rota tiver um id, estamos alterando um cliente que já existe
   clienteId: string | null = this.route.snapshot.paramMap.get('id');
 
   ngOnInit() {
     if (this.clienteId) {
-      // Só o administrador pode alterar clientes
       if (!this.service.exigirAdmin()) {
         return;
       }
@@ -51,7 +48,6 @@ export class ClienteFormComponent implements OnInit {
   }
 
   salvar() {
-    // Mesmas validações do cadastro do Space Code
     if (this.cliente.nome === '') {
       this.mensagemErro = 'Digite o seu nome!';
       return;
@@ -86,7 +82,7 @@ export class ClienteFormComponent implements OnInit {
   }
 
   incluir() {
-    // Confere se o e-mail já está cadastrado
+   
     for (let i = 0; i < this.listaClientes.length; i++) {
       if (this.listaClientes[i].email === this.cliente.email) {
         this.mensagemErro = 'Este e-mail já está cadastrado!';
@@ -97,8 +93,6 @@ export class ClienteFormComponent implements OnInit {
     this.service.incluir(this.cliente).subscribe({
       next: (novo) => {
         alert(`Cliente ${novo.nome} cadastrado com sucesso!`);
-
-        // Administrador volta para a listagem, cliente novo já entra na loja
         if (this.service.ehAdmin()) {
           this.router.navigate(['/admin-clientes-listar']);
         } else {

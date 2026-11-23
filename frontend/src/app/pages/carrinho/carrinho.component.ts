@@ -27,7 +27,6 @@ export class CarrinhoComponent {
   totalPedido: number = 0;
 
   finalizarCompra() {
-    // Para comprar, o cliente precisa estar logado
     if (this.clienteService.nomeLogado() === '') {
       alert('Faça login para finalizar a compra.');
       this.router.navigate(['/login']);
@@ -42,7 +41,6 @@ export class CarrinhoComponent {
       total: this.carrinho.calcularTotal()
     };
 
-    // Salva o pedido na API e, se der certo, mostra a confirmação
     this.pedidoService.incluir(pedido).subscribe({
       next: (salvo) => {
         this.numeroPedido = salvo.id;

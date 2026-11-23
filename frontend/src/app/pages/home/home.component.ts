@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
       next: (produtos) => {
         this.produtos = produtos;
 
-        // O PC montado (categoria 'pc') vira o destaque da página
         for (let i = 0; i < produtos.length; i++) {
           if (produtos[i].categoria === 'pc' && !this.heroBayOne) {
             this.heroBayOne = produtos[i];

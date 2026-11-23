@@ -20,7 +20,6 @@ export class CarrinhoService {
   }
 
   adicionar(produto: Produto) {
-    // Se o produto já está no carrinho, só aumenta a quantidade
     for (let i = 0; i < this.itens.length; i++) {
       if (this.itens[i].produto.id === produto.id) {
         this.itens[i].quantidade++;
@@ -68,7 +67,6 @@ export class CarrinhoService {
     return subtotal;
   }
 
-  // Frete grátis a partir de R$ 299
   calcularFrete(): number {
     const subtotal = this.calcularSubtotal();
     if (subtotal === 0 || subtotal >= 299) {

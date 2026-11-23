@@ -20,7 +20,7 @@ export class LoginComponent {
   botaoDesabilitado: boolean = true;
   mensagemErro: string = '';
 
-  // Valido se os campos foram preenchidos para habilitar o botão de login
+ 
   validarFormulario() {
     if (this.login.trim() !== '' && this.senha.trim() !== '') {
       this.botaoDesabilitado = false;
@@ -29,15 +29,12 @@ export class LoginComponent {
     }
   }
 
-  // Busco os clientes na API e procuro um com o mesmo e-mail e senha
   fazerLogin() {
     this.service.listar().subscribe({
       next: (clientes) => {
         for (let i = 0; i < clientes.length; i++) {
           if (clientes[i].email === this.login && clientes[i].senha === this.senha) {
             this.service.entrar(clientes[i]);
-
-            // Administrador vai para o painel, cliente volta para a loja
             if (clientes[i].perfil === 'admin') {
               this.router.navigate(['/admin-produtos-listar']);
             } else {
