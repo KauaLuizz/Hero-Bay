@@ -114,7 +114,44 @@
       "email": "ana@email.com",
       "senha": "123",
       "perfil": "cliente"
+    },
+    {
+      "nome": "Gustavo",
+      "email": "Gustavo@gmail.com",
+      "senha": "Guhsilva21+",
+      "perfil": "cliente",
+      "id": 3
     }
   ],
-  "pedidos": []
+  "pedidos": [
+    {
+      "clienteId": 3,
+      "clienteNome": "Gustavo",
+      "data": "23/11/2026, 04:52:13",
+      "itens": [
+        {
+          "produto": {
+            "id": 10,
+            "nome": "Hero Bay One",
+            "preco": 8999,
+            "categoria": "pc",
+            "descricao": "Vem com placa de vídeo GeForce RTX, 32 GB de memória, SSD de 2 TB e watercooler de 360 mm.",
+            "imagem": "images/produtos/hero-bay-one.jpg",
+            "estoque": 20
+          },
+          "quantidade": 1
+        }
+      ],
+      "total": 8999,
+      "id": 1
+    },
+    {
+      "clienteId": 3,
+      "clienteNome": "Gustavo",
+      "data": "23/11/2026, 04:52:15",
+      "itens": [],
+      "total": 0,
+      "id": 2
+    }
+  ]
 }
