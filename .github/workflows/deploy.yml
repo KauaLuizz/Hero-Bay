@@ -1,0 +1,43 @@
+name: Deploy no GitHub Pages
+
+on:
+  push:
+    branches: [main, Ajuste_EntregaFinal]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Instalar dependências
+        run: |
+          npm install
+          npm install --prefix frontend
+
+      - name: Gerar o site (build de produção)
+        working-directory: frontend
+        run: npx ng build --configuration=production --base-href /${{ github.event.repository.name }}/
+
+      - name: Preparar arquivos para o Pages
+        run: |
+          cp frontend/dist/frontend/browser/index.html frontend/dist/frontend/browser/404.html
+          touch frontend/dist/frontend/browser/.nojekyll
+
+      - name: Publicar na branch gh-pages
+        working-directory: frontend/dist/frontend/browser
+        run: |
+          git init -b gh-pages
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Deploy do site"
+          git push --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages
