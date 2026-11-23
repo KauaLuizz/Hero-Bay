@@ -118,7 +118,7 @@
     {
       "nome": "Gustavo",
       "email": "Gustavo@gmail.com",
-      "senha": "Guhsilva21+",
+      "senha": "gUHSILVA21+",
       "perfil": "cliente",
       "id": 3
     }
@@ -127,7 +127,7 @@
     {
       "clienteId": 3,
       "clienteNome": "Gustavo",
-      "data": "23/11/2026, 04:52:13",
+      "data": "23/11/2026, 09:45:18",
       "itens": [
         {
           "produto": {
@@ -144,14 +144,6 @@
       ],
       "total": 8999,
       "id": 1
-    },
-    {
-      "clienteId": 3,
-      "clienteNome": "Gustavo",
-      "data": "23/11/2026, 04:52:15",
-      "itens": [],
-      "total": 0,
-      "id": 2
     }
   ]
 }
